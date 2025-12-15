@@ -2,18 +2,30 @@ pipeline {
     agent any
 
     stages {
-        stage('Clonar repositorio') {
+        stage('Crear archivo') {
             steps {
-                sh 'echo "Jenkins mola >> Jenkins.txt"'
+                sh '''
+                    pwd
+                    echo "Jenkins mola" > Jenkins.txt
+                    ls -l
+                '''
             }
         }
 
         stage('Comprobar contenido') {
             steps {
-                sh 'cat Jenkins.txt'
+                sh '''
+                    pwd
+                    ls -l
+                    cat Jenkins.txt
+                '''
             }
         }
 
-    
+        stage('Mensaje final') {
+            steps {
+                echo 'Pipeline ejecutado correctamente 🚀'
+            }
+        }
     }
 }
