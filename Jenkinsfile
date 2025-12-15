@@ -2,29 +2,15 @@ pipeline {
     agent any
 
     stages {
-        stage('Crear archivo') {
+        stage('Comprobar Python') {
             steps {
-                sh '''
-                    pwd
-                    echo "Jenkins mola" > Jenkins.txt
-                    ls -l
-                '''
+                sh 'python3 --version || echo "Python no instalado"'
             }
         }
 
-        stage('Comprobar contenido') {
+        stage('Ejecutar script Python') {
             steps {
-                sh '''
-                    pwd
-                    ls -l
-                    cat Jenkins.txt
-                '''
-            }
-        }
-
-        stage('Mensaje final') {
-            steps {
-                echo 'Pipeline ejecutado correctamente 🚀'
+                sh 'python3 script.py'
             }
         }
     }
