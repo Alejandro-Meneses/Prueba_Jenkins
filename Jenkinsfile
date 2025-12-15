@@ -10,7 +10,10 @@ pipeline {
 
         stage('Ejecutar script Python') {
             steps {
-                sh 'python3 script.py'
+                sh 'python3 "print("Hola desde Python ejecutado por Jenkins 🚀")
+
+for i in range(1, 6):
+    print(f"Contador: {i}")"'
             }
         }
     }
