@@ -4,22 +4,16 @@ pipeline {
     stages {
         stage('Clonar repositorio') {
             steps {
-                git branch: 'main',
-                    url: 'https://github.com/USUARIO/REPO.git',
-                    credentialsId: 'github-repo-token'
+                sh 'echo "Jenkins mola >> Jenkins.txt"'
             }
         }
 
         stage('Comprobar contenido') {
             steps {
-                sh 'ls -la'
+                sh 'cat Jenkins.txt'
             }
         }
 
-        stage('Mensaje prueba') {
-            steps {
-                sh 'echo "Pipeline Jenkins funcionando correctamente"'
-            }
-        }
+    
     }
 }
